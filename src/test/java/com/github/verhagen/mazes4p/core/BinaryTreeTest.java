@@ -10,7 +10,9 @@ public class BinaryTreeTest {
 	public void grid(int rows, int columns) {
 		Grid grid = new Grid(rows, columns);
 		new BinaryTree().on(grid);
-		AsciiArt visitor = new AsciiArt(columns);
+//		AsciiArt visitor = new AsciiArt(columns);
+		Distances distances = grid.get(0, 0).distances();
+		AsciiArt visitor = new AsciiArtWithDistances(columns, distances);
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
 	}

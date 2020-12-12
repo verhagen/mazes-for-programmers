@@ -3,6 +3,7 @@ package com.github.verhagen.mazes4p.core;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -120,6 +121,26 @@ public class Cell {
 
 	public int getColumn() {
 		return column;
+	}
+
+	public Distances distances() {
+		Distances distances = new Distances(this);
+		Set<Cell> frontier = new HashSet<>();
+		frontier.add(this);
+		while (! frontier.isEmpty()) {
+			Set<Cell> newFrontier = new HashSet<>();
+			for (Cell cell : frontier) {
+				for (Cell linkedCell : cell.links.keySet()) {
+					if (distances.isKnown(linkedCell)) {
+						continue;
+					}
+					distances.add(linkedCell, distances.getDistanceToRoot(cell) + 1);
+					newFrontier.add(linkedCell);
+				}
+			}
+			frontier = newFrontier;
+		}
+		return distances;
 	}
 
 }

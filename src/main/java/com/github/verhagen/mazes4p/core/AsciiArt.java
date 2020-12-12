@@ -9,7 +9,7 @@ public class AsciiArt implements GridVisitor {
 	public AsciiArt(int columns) {
 		bldr.append("+");
 		for (int c = 0; c < columns; c++) {
-			bldr.append("---+");
+			bldr.append("----+");
 		}
 		bldr.append("\n");
 	}
@@ -30,9 +30,14 @@ public class AsciiArt implements GridVisitor {
 
 	@Override
 	public void visit(Cell cell) {
-		nextRowTop.append("   ").append(cell.isLinked(Direction.EAST) ? " " : "|");
-		nextRowBottom.append(cell.isLinked(Direction.SOUTH) ? "   " : "---").append("+");
+		nextRowTop.append(" ").append(content(cell)).append(" ").append(cell.isLinked(Direction.EAST) ? " " : "|");
+		nextRowBottom.append(cell.isLinked(Direction.SOUTH) ? "    " : "----").append("+");
 	}
+
+	public String content(Cell cell) {
+		return "  ";
+	}
+
 
 	@Override
 	public void end() {
