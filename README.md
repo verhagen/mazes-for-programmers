@@ -1,14 +1,12 @@
 # Mazes for Programmers
 Code Your Own Twisty Little Passages
 
-<a href="https://pragprog.com/titles/jbmaze/mazes-for-programmers/"><img  width=150  src="https://github.com/verhagen/mazes-for-programmers/blob/master/src/documentation/image/book-mazes-for-programmers.jpeg" /></a>
-
 <a href="https://pragprog.com/titles/jbmaze/mazes-for-programmers/"><img  width=150  src="src/documentation/image/book-mazes-for-programmers.jpeg" /></a>
 
 
 ## Java Implementation
 
-In the book *Mazes for Programmers* a Ruby implementation is given, but these mazes generators can be made in many different programming languages. This repository contains a Java implementation.
+In the book *Mazes for Programmers* a Ruby implementation is given, but it can be implemented in many different programming languages. This repository contains a Java implementation.
 
 
 ## About the Book
