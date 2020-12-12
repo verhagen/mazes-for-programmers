@@ -8,6 +8,10 @@ Code Your Own Twisty Little Passages
 
 In the book *Mazes for Programmers* a Ruby implementation is given, but it can be implemented in many different programming languages. This repository contains a Java implementation.
 
+Not everything from the book has been implemented. Check the [Progress](progress.md).
+
+Looking for another implementation? Check [GitHub](https://github.com/search?q=mazes+for+programmers)!
+
 
 ## About the Book
 
