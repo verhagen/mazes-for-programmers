@@ -10,7 +10,7 @@
 - [x] Implementing the Binary Tree Algorithm
 - [x] Displaying a Maze on a Terminal
 - [x] Implementing the Sidewinder Algorithm
-- [ ] Rendering a Maze as an Image
+- [x] Rendering a Maze as an Image
 
 
 ### Finding Solutions
