@@ -13,7 +13,7 @@ public class AsciiArtWithDistances extends AsciiArt {
 	@Override
 	public String content(Cell cell) {
 		int distance = distances.getDistanceToRoot(cell);
-		return (distance < 10 ? " " : "") + String.valueOf(distance);
+		return (distance == -1 ? "  " : (distance < 10 ? " " : "") + String.valueOf(distance));
 	}
 	
 }

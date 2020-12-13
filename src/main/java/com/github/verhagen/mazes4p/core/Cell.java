@@ -50,7 +50,7 @@ public class Cell {
 		return links.containsKey(cell);
 	}
 	
-	public Set<?> getLinks() {
+	public Set<Cell> getLinks() {
 		return links.keySet();
 	}
 	public boolean isLinked(Cell cell) {
@@ -124,7 +124,8 @@ public class Cell {
 	}
 
 	public Distances distances() {
-		Distances distances = new Distances(this);
+		Distances distances = new Distances();
+		distances.add(this, 0);
 		Set<Cell> frontier = new HashSet<>();
 		frontier.add(this);
 		while (! frontier.isEmpty()) {

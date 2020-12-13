@@ -16,9 +16,9 @@
 ### Finding Solutions
 
 - [x] Implementing Dijkstra’s
-- [ ] Finding the Shortest Path
-- [ ] Making Challenging Mazes
-- [ ] Coloring Your Mazes
+- [x] Finding the Shortest Path
+- [x] Making Challenging Mazes
+- [x] Coloring Your Mazes
 
 
 ### Avoiding Bias with Random Walks

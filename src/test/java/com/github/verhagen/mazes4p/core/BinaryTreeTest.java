@@ -11,7 +11,7 @@ public class BinaryTreeTest {
 
 
 	@ParameterizedTest
-	@CsvSource({ "4, 4", "6, 6", "12, 12"})
+	@CsvSource({ "4, 4", "6, 6", "12, 12" })
 	public void grid(int rows, int columns) {
 		Grid grid = new Grid(rows, columns);
 		new BinaryTree().on(grid);
@@ -20,8 +20,16 @@ public class BinaryTreeTest {
 		AsciiArt visitor = new AsciiArtWithDistances(columns, distances);
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
-		
-		Graphics2DArt graphicsVisitor = new Graphics2DArt(imagePath, "binary-tree", rows, columns, 10);
+
+		Cell newStart = distances.max();
+		Distances newDistances = newStart.distances();
+		Distances breadcrumbs = newDistances.pathTo(newDistances.max());
+		System.out.println("new start " + newStart + "  max " + newDistances.max());
+		visitor = new AsciiArtWithDistances(columns, breadcrumbs);
+		grid.accept(visitor);
+		System.out.println(visitor.toString());
+
+		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "binary-tree", rows, columns, 10, distances);
 		grid.accept(graphicsVisitor);
 	}
 
