@@ -40,7 +40,7 @@ public class Sidewinder implements MazeCreator {
 
 				if (shouldCloseOut) {
 					if (run.size() > 0) {
-						int index = (run.size() > 1) ? random.nextInt(run.size()) : 0;
+						int index = (run.size() > 1) ? grid.getRandom().nextInt(run.size()) : 0;
 						Cell member = run.get(index);
 						member.link(member.getNeighbors(Direction.NORTH));
 					}
@@ -58,6 +58,11 @@ public class Sidewinder implements MazeCreator {
 			
 		});
 		
+	}
+
+	@Override
+	public Class<?> getCreator() {
+		return this.getClass();
 	}
 
 }

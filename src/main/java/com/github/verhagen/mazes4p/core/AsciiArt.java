@@ -6,7 +6,8 @@ public class AsciiArt implements GridVisitor {
 	private StringBuilder nextRowBottom = new StringBuilder("+");
 
 
-	public AsciiArt(int columns) {
+	public AsciiArt(int columns, long seed) {
+		bldr.append("Maze (seed: " + seed + ")");
 		bldr.append("+");
 		for (int c = 0; c < columns; c++) {
 			bldr.append("----+");

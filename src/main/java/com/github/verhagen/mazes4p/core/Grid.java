@@ -1,17 +1,23 @@
 package com.github.verhagen.mazes4p.core;
 
+import java.util.Random;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Grid {
 	private int rows;
 	private int columns;
 	private Cell[][] matrix;
 	private long seed;
+	@JsonIgnore
+	private Random random;
 
 
 	public Grid(int rows, int columns, long seed) {
 		this.rows = rows;
 		this.columns = columns;
 		this.seed = seed;
+		this.random = new Random(seed);
 		prepareGrid();
 		configureCells();
 	}
@@ -45,8 +51,8 @@ public class Grid {
 		return matrix[row][column];
 	}
 	
-	public Cell getRandom() {
-		return null;
+	public Random getRandom() {
+		return random;
 	}
 	
 	public int size() {

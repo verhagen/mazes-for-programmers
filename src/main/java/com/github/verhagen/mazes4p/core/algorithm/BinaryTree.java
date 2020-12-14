@@ -45,4 +45,11 @@ public class BinaryTree implements MazeCreator {
 			
 		});
 	}
+
+
+	@Override
+	public Class<?> getCreator() {
+		return this.getClass();
+	}
+
 }

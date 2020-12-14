@@ -9,8 +9,9 @@ public class Graphics2DArt2WithDistance extends Graphics2DArt {
 	private int maxDistance;
 
 
-	public Graphics2DArt2WithDistance(Path imagePath, String generatorName, int rows, int columns, int cellSize, Distances distances, int colorIndex) {
-		super(imagePath, generatorName, rows, columns, cellSize);
+	public Graphics2DArt2WithDistance(Path imagePath, String generatorName, int rows, int columns, Summary summary, int cellSize
+			, Distances distances, int colorIndex) {
+		super(imagePath, generatorName, rows, columns, summary, cellSize);
 		this.colorIndex = colorIndex;
 		this.distances = distances;
 		maxDistance = distances.getDistanceToRoot(distances.max());

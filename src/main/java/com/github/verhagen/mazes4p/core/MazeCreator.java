@@ -4,4 +4,6 @@ public interface MazeCreator {
 
 	void on(Grid grid);
 
+	Class<?> getCreator();
+
 }

@@ -15,18 +15,22 @@ public class SidewinderTest {
 
 
 	@ParameterizedTest
-	@CsvSource({  "25, 25" }) //, "100, 100"  "4, 4", "6, 6", "12, 12",
-	public void grid(int rows, int columns) {
-		Grid grid = new Grid(rows, columns, random.nextLong());
-		new Sidewinder().on(grid);
-		AsciiArt visitor = new AsciiArt(columns);
+	@CsvSource({  "25, 25, 3731109034316917236" }) //, "100, 100"  "4, 4", "6, 6", "12, 12",
+	public void grid(int rows, int columns, long seed) {
+		Summary summary = new Summary();
+
+		Grid grid = new Grid(rows, columns, (seed == 0) ? random.nextLong() : seed);
+		summary.setGrid(grid);
+		summary.setMazeCreator(new Sidewinder());
+		summary.getMazeCreator().on(grid);
+		AsciiArt visitor = new AsciiArt(columns, grid.getSeed());
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
 
 		Distances distances = grid.get(rows / 2, columns / 2).distances();
 		
-		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "sidewinder", rows, columns, 10
-				, distances, random.nextInt(6));
+		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "sidewinder", rows, columns, summary
+				, 15 , distances, random.nextInt(6));
 		grid.accept(graphicsVisitor);
 	}
 

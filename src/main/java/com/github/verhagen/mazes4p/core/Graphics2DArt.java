@@ -14,6 +14,8 @@ import javax.imageio.ImageIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Graphics2DArt implements GridVisitor {
 	protected static Logger logger = LoggerFactory.getLogger(Graphics2DArt.class);
 	private BufferedImage bi;
@@ -22,16 +24,17 @@ public class Graphics2DArt implements GridVisitor {
 	private Color WALL = Color.BLACK;
 	private Path imagePath;
 	private String name;
+	private Summary summary;
 
-	public Graphics2DArt(Path imagePath, String generatorName, int rows, int columns, int cellSize) {
+	public Graphics2DArt(Path imagePath, String generatorName, int rows, int columns, Summary summary, int cellSize) {
 		this.imagePath = imagePath;
 		this.cellSize = cellSize;
 		bi = new BufferedImage(columns * cellSize + 1, rows * cellSize + 1, BufferedImage.TYPE_INT_ARGB);
 		ig2 = bi.createGraphics();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
-		name = MessageFormat.format("{0}-maze-{1}x{2}-{3}."
+		name = MessageFormat.format("{0}-maze-{1}-{2}x{3}."
 				, LocalDateTime.now().format(dtf), generatorName, rows, columns);
-
+		this.summary = summary;
 	}
 
 	@Override
@@ -81,13 +84,32 @@ public class Graphics2DArt implements GridVisitor {
 		for (String type : types) {
 			Path filePath = imagePath.resolve(name + type);
 			try {
-				
 				ImageIO.write(bi, type, filePath.toFile());
 			}
 			catch (IOException ioe) {
 				logger.warn("Unable to write ", ioe);
 			}
+			summary.addFile(filePath.getFileName());
 		}
+		createSummary(imagePath, summary);
+	}
+
+	private void createSummary(Path imagePath, Summary summary) {
+		Path filePath = imagePath.resolve(name + "json");
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			objectMapper.writeValue(filePath.toFile(), summary);
+		}
+		catch (IOException ioe) {
+			logger.error("Unable to create / write file '" + filePath + "'", ioe);
+		}
+//		try (FileWriter writer = new FileWriter(filePath.toFile())) {
+//			writer.append("seed: " + summary2);
+//			writer.flush();
+//		}
+//		catch (IOException ioe) {
+//			logger.error("Unable to create / write file '" + filePath + "'");
+//		}
 	}
 
 }

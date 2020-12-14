@@ -4,8 +4,8 @@ public class AsciiArtWithDistances extends AsciiArt {
 	private Distances distances;
 
 
-	public AsciiArtWithDistances(int columns, Distances distances) {
-		super(columns);
+	public AsciiArtWithDistances(int columns, long seed, Distances distances) {
+		super(columns, seed);
 		this.distances = distances;
 	}
 

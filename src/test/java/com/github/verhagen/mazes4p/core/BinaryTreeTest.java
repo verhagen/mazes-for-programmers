@@ -17,11 +17,15 @@ public class BinaryTreeTest {
 	@ParameterizedTest
 	@CsvSource({ "25, 25"}) //"4, 4", "6, 6", "12, 12", "100, 100"
 	public void grid(int rows, int columns) {
+		Summary summary = new Summary();
+
 		Grid grid = new Grid(rows, columns, random.nextLong());
-		new BinaryTree().on(grid);
+		summary.setGrid(grid);
+		summary.setMazeCreator(new BinaryTree());
+		summary.getMazeCreator().on(grid);
 //		AsciiArt visitor = new AsciiArt(columns);
 		Distances distances = grid.get(0, 0).distances();
-		AsciiArt visitor = new AsciiArtWithDistances(columns, distances);
+		AsciiArt visitor = new AsciiArtWithDistances(columns, grid.getSeed(), distances);
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
 
@@ -29,12 +33,12 @@ public class BinaryTreeTest {
 		Distances newDistances = newStart.distances();
 		Distances breadcrumbs = newDistances.pathTo(newDistances.max());
 		System.out.println("new start " + newStart + "  max " + newDistances.max());
-		visitor = new AsciiArtWithDistances(columns, breadcrumbs);
+		visitor = new AsciiArtWithDistances(columns, grid.getSeed(), breadcrumbs);
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
 
-		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "binary-tree", rows, columns, 10
-				, grid.get(rows / 2, columns / 2).distances(), random.nextInt(6));
+		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "binary-tree", rows, columns, summary
+				, 10, grid.get(rows / 2, columns / 2).distances(), random.nextInt(6));
 		grid.accept(graphicsVisitor);
 	}
 
