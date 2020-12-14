@@ -22,12 +22,12 @@ public class Graphics2DArt implements GridVisitor {
 	protected Graphics2D ig2;
 	private int cellSize;
 	private Color WALL = Color.BLACK;
-	private Path imagePath;
+	private Path targetPath;
 	private String name;
 	private Summary summary;
 
-	public Graphics2DArt(Path imagePath, String generatorName, int rows, int columns, Summary summary, int cellSize) {
-		this.imagePath = imagePath;
+	public Graphics2DArt(Path targetPath, String generatorName, int rows, int columns, Summary summary, int cellSize) {
+		this.targetPath = targetPath;
 		this.cellSize = cellSize;
 		bi = new BufferedImage(columns * cellSize + 1, rows * cellSize + 1, BufferedImage.TYPE_INT_ARGB);
 		ig2 = bi.createGraphics();
@@ -49,7 +49,6 @@ public class Graphics2DArt implements GridVisitor {
 		int x2 = (cell.getColumn() + 1) * cellSize;
 		int y2 = (cell.getRow() + 1) * cellSize;
 		draw(cell, x1, y1, x2, y2);
-
 	}
 
 	protected void draw(Cell cell, int x1, int y1, int x2, int y2) {
@@ -80,9 +79,12 @@ public class Graphics2DArt implements GridVisitor {
 
 	@Override
 	public void end() {
+		if (! targetPath.toFile().exists()) {
+			targetPath.toFile().mkdirs();
+		}
 		String[] types = new String[] { "png" };
 		for (String type : types) {
-			Path filePath = imagePath.resolve(name + type);
+			Path filePath = targetPath.resolve(name + type);
 			try {
 				ImageIO.write(bi, type, filePath.toFile());
 			}
@@ -91,11 +93,11 @@ public class Graphics2DArt implements GridVisitor {
 			}
 			summary.addFile(filePath.getFileName());
 		}
-		createSummary(imagePath, summary);
+		createSummary(targetPath, summary);
 	}
 
-	private void createSummary(Path imagePath, Summary summary) {
-		Path filePath = imagePath.resolve(name + "json");
+	private void createSummary(Path targetPath, Summary summary) {
+		Path filePath = targetPath.resolve(name + "json");
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			objectMapper.writeValue(filePath.toFile(), summary);
@@ -103,13 +105,6 @@ public class Graphics2DArt implements GridVisitor {
 		catch (IOException ioe) {
 			logger.error("Unable to create / write file '" + filePath + "'", ioe);
 		}
-//		try (FileWriter writer = new FileWriter(filePath.toFile())) {
-//			writer.append("seed: " + summary2);
-//			writer.flush();
-//		}
-//		catch (IOException ioe) {
-//			logger.error("Unable to create / write file '" + filePath + "'");
-//		}
 	}
 
 }

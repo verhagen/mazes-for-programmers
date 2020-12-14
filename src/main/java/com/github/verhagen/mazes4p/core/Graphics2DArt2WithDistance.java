@@ -46,8 +46,6 @@ public class Graphics2DArt2WithDistance extends Graphics2DArt {
 			case 3: return new Color(bright, bright, dark);
 			case 4: return new Color(bright, dark, bright);
 			case 5: return new Color(dark, bright, bright);
-//		case 0: return new Color(dark, dark); 
-//		case 0: return new Color(dark, dark);
 		}
 		return null;
 	}
