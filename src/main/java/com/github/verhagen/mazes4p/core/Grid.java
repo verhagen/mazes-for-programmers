@@ -1,15 +1,17 @@
 package com.github.verhagen.mazes4p.core;
 
+
 public class Grid {
 	private int rows;
 	private int columns;
 	private Cell[][] matrix;
+	private long seed;
 
 
-	public Grid(int rows, int columns) {
-		super();
+	public Grid(int rows, int columns, long seed) {
 		this.rows = rows;
 		this.columns = columns;
+		this.seed = seed;
 		prepareGrid();
 		configureCells();
 	}
@@ -49,6 +51,10 @@ public class Grid {
 	
 	public int size() {
 		return rows * columns;
+	}
+
+	public long getSeed() {
+		return seed;
 	}
 
 	public void accept(CellVisitor visitor) {

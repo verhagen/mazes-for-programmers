@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.nio.file.Path;
 
 public class Graphics2DArt2WithDistance extends Graphics2DArt {
+	private int colorIndex;
 	private Distances distances;
 	private int maxDistance;
 
 
-	public Graphics2DArt2WithDistance(Path imagePath, String generatorName, int rows, int columns, int cellSize, Distances distances) {
+	public Graphics2DArt2WithDistance(Path imagePath, String generatorName, int rows, int columns, int cellSize, Distances distances, int colorIndex) {
 		super(imagePath, generatorName, rows, columns, cellSize);
+		this.colorIndex = colorIndex;
 		this.distances = distances;
 		maxDistance = distances.getDistanceToRoot(distances.max());
 	}
@@ -36,7 +38,17 @@ public class Graphics2DArt2WithDistance extends Graphics2DArt {
 		int dark = Math.round(255 * intensity);
 		int bright = Math.round(128 + (127 * intensity));
 		logger.info("dark: " + dark + "  bright: " + bright);
-		return new Color(bright, dark, bright);
+		switch (colorIndex) {
+			case 0: return new Color(bright, dark, dark); 
+			case 1: return new Color(dark, bright, dark);
+			case 2: return new Color(dark, dark, bright);
+			case 3: return new Color(bright, bright, dark);
+			case 4: return new Color(bright, dark, bright);
+			case 5: return new Color(dark, bright, bright);
+//		case 0: return new Color(dark, dark); 
+//		case 0: return new Color(dark, dark);
+		}
+		return null;
 	}
 
 }
