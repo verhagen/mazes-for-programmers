@@ -2,6 +2,9 @@
 Code Your Own Twisty Little Passages
 
 <a href="https://pragprog.com/titles/jbmaze/mazes-for-programmers/"><img  width=150  src="src/documentation/image/book-mazes-for-programmers.jpeg" /></a>
+&nbsp;<img  width=150  src="src/documentation/image/20201213-182530-maze-binary-tree-25x25.png" />
+&nbsp;<img  width=150  src="src/documentation/image/20201214-083657-maze-sidewinder-25x25.png" />
+
 
 
 ## Java Implementation
