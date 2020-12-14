@@ -11,6 +11,7 @@ import com.github.verhagen.mazes4p.core.algorithm.BinaryTree;
 
 public class BinaryTreeTest {
 	private Path imagePath = Paths.get("target", "image");
+	private Path htmlPath = Paths.get("target", "html");
 	private Random random = new Random();
 
 
@@ -37,9 +38,15 @@ public class BinaryTreeTest {
 		grid.accept(visitor);
 		System.out.println(visitor.toString());
 
+		Distances midGridDistances = grid.get(rows / 2, columns / 2).distances();
+		int colorIndex = random.nextInt(6);
 		Graphics2DArt graphicsVisitor = new Graphics2DArt2WithDistance(imagePath, "binary-tree", rows, columns, summary
-				, 10, grid.get(rows / 2, columns / 2).distances(), random.nextInt(6));
+				, 10, midGridDistances, colorIndex);
 		grid.accept(graphicsVisitor);
+
+		Graphics2DHtml graphics2dHtml = new Graphics2DHtmlWithDistance(htmlPath, "binary-tree", rows, columns, summary
+				, 10, midGridDistances, colorIndex);
+		grid.accept(graphics2dHtml);
 	}
 
 }
