@@ -30,7 +30,6 @@ public class AldousBroderTest {
 		summary.setGrid(grid);
 		summary.setMazeCreator(new AldousBroder());
 		summary.getMazeCreator().on(grid);
-//		AsciiArt visitor = new AsciiArt(columns);
 		Distances distances = grid.get(0, 0).distances();
 		AsciiArt visitor = new AsciiArtWithDistances(columns, grid.getSeed(), distances);
 		grid.accept(visitor);
