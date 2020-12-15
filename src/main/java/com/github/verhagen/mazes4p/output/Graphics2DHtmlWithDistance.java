@@ -1,7 +1,11 @@
-package com.github.verhagen.mazes4p.core;
+package com.github.verhagen.mazes4p.output;
 
 import java.awt.Color;
 import java.nio.file.Path;
+
+import com.github.verhagen.mazes4p.core.Cell;
+import com.github.verhagen.mazes4p.core.Distances;
+import com.github.verhagen.mazes4p.core.Summary;
 
 public class Graphics2DHtmlWithDistance extends Graphics2DHtml {
 	private int colorIndex;

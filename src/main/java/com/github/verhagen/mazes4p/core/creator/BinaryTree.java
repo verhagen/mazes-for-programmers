@@ -1,4 +1,4 @@
-package com.github.verhagen.mazes4p.core.algorithm;
+package com.github.verhagen.mazes4p.core.creator;
 
 import java.util.List;
 import java.util.Random;

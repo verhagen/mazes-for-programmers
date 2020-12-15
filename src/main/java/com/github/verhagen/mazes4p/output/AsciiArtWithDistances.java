@@ -1,4 +1,7 @@
-package com.github.verhagen.mazes4p.core;
+package com.github.verhagen.mazes4p.output;
+
+import com.github.verhagen.mazes4p.core.Cell;
+import com.github.verhagen.mazes4p.core.Distances;
 
 public class AsciiArtWithDistances extends AsciiArt {
 	private Distances distances;

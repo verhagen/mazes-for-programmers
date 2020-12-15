@@ -7,7 +7,12 @@ import java.util.Random;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import com.github.verhagen.mazes4p.core.algorithm.Sidewinder;
+import com.github.verhagen.mazes4p.core.creator.Sidewinder;
+import com.github.verhagen.mazes4p.output.AsciiArt;
+import com.github.verhagen.mazes4p.output.Graphics2DArt;
+import com.github.verhagen.mazes4p.output.Graphics2DArt2WithDistance;
+import com.github.verhagen.mazes4p.output.Graphics2DHtml;
+import com.github.verhagen.mazes4p.output.Graphics2DHtmlWithDistance;
 
 public class SidewinderTest {
 	private Path imagePath = Paths.get("target", "image");

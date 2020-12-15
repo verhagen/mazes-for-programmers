@@ -1,4 +1,4 @@
-package com.github.verhagen.mazes4p.core;
+package com.github.verhagen.mazes4p.output;
 
 import java.awt.Color;
 import java.io.FileWriter;
@@ -13,6 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.verhagen.mazes4p.core.Cell;
+import com.github.verhagen.mazes4p.core.Direction;
+import com.github.verhagen.mazes4p.core.GridVisitor;
+import com.github.verhagen.mazes4p.core.Summary;
 
 public class Graphics2DHtml implements GridVisitor {
 	protected static Logger logger = LoggerFactory.getLogger(Graphics2DHtml.class);
