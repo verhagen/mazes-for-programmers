@@ -24,7 +24,7 @@
 ### Avoiding Bias with Random Walks
 
 - [x] Implementing Aldous-Broder
-- [ ] Implementing Wilson’s Algorithm
+- [x] Implementing Wilson’s Algorithm
 
 
 ### Adding Constraints to Random Walks
