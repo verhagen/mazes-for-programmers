@@ -29,8 +29,8 @@
 
 ### Adding Constraints to Random Walks
 
-- [ ] Implementing Hunt-and-Kill
-- [ ] Counting Dead Ends
+- [x] Implementing Hunt-and-Kill
+- [x] Counting Dead Ends
 - [ ] Implementing the Recursive Backtracker
 
 

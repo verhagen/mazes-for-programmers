@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.verhagen.mazes4p.core.Cell;
 import com.github.verhagen.mazes4p.core.Direction;
+import com.github.verhagen.mazes4p.core.Grid;
 import com.github.verhagen.mazes4p.core.GridVisitor;
 import com.github.verhagen.mazes4p.core.Summary;
 
@@ -77,12 +78,12 @@ public class Graphics2DArt implements GridVisitor {
 	}
 	
 	@Override
-	public void begin() {
+	public void begin(Grid grid) {
 		// No implementation needed
 	}
 
 	@Override
-	public void end() {
+	public void end(Grid grid) {
 		if (! targetPath.toFile().exists()) {
 			targetPath.toFile().mkdirs();
 		}

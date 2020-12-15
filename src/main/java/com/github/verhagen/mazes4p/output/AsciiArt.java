@@ -2,6 +2,7 @@ package com.github.verhagen.mazes4p.output;
 
 import com.github.verhagen.mazes4p.core.Cell;
 import com.github.verhagen.mazes4p.core.Direction;
+import com.github.verhagen.mazes4p.core.Grid;
 import com.github.verhagen.mazes4p.core.GridVisitor;
 
 public class AsciiArt implements GridVisitor {
@@ -11,18 +12,17 @@ public class AsciiArt implements GridVisitor {
 
 
 	public AsciiArt(int columns, long seed) {
-		bldr.append("Maze (seed: " + seed + ")\n");
-		bldr.append("+");
-		for (int c = 0; c < columns; c++) {
-			bldr.append("----+");
-		}
-		bldr.append("\n");
 	}
 
 
 	@Override
-	public void begin() {
-		// No implementation needed
+	public void begin(Grid grid) {
+		bldr.append("Maze (seed: " + grid.getSeed() + ";  death-ends: " + grid.getDeathEnds() + ")\n");
+		bldr.append("+");
+		for (int c = 0; c < grid.getColumns(); c++) {
+			bldr.append("----+");
+		}
+		bldr.append("\n");
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class AsciiArt implements GridVisitor {
 
 
 	@Override
-	public void end() {
+	public void end(Grid grid) {
 		bldr.append(nextRowTop).append("\n");
 		bldr.append(nextRowBottom).append("\n");
 	}

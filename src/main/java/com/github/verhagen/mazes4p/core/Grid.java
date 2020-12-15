@@ -1,6 +1,9 @@
 package com.github.verhagen.mazes4p.core;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -69,6 +72,33 @@ public class Grid {
 		return seed;
 	}
 
+	public int getColumns() {
+		return columns;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	@JsonIgnore
+	public Collection<Cell> getDeathEnds() {
+		Set<Cell> deathEnds = new HashSet<>();
+		accept(new CellVisitor() {
+			@Override
+			public void visit(Cell cell) {
+				if (cell.getLinks().size() == 1) {
+					deathEnds.add(cell);
+				}
+			}
+			
+			@Override
+			public void nextRow() {
+				// No implementation needed
+			}
+		});
+		return deathEnds;
+	}
+
 	public void accept(CellVisitor visitor) {
 		for (int r = 0; r < rows; r++) {
 			if (r > 0) {
@@ -82,8 +112,9 @@ public class Grid {
 	}
 
 	public void accept(GridVisitor visitor) {
-		visitor.begin();
+		visitor.begin(this);
 		accept((CellVisitor)visitor);
-		visitor.end();
+		visitor.end(this);
 	}
+
 }
