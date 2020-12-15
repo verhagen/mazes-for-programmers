@@ -11,7 +11,7 @@ public class AsciiArt implements GridVisitor {
 
 
 	public AsciiArt(int columns, long seed) {
-		bldr.append("Maze (seed: " + seed + ")");
+		bldr.append("Maze (seed: " + seed + ")\n");
 		bldr.append("+");
 		for (int c = 0; c < columns; c++) {
 			bldr.append("----+");

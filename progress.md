@@ -23,7 +23,7 @@
 
 ### Avoiding Bias with Random Walks
 
-- [ ] Implementing Aldous-Broder
+- [x] Implementing Aldous-Broder
 - [ ] Implementing Wilson’s Algorithm
 
 

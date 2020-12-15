@@ -51,10 +51,16 @@ public class Grid {
 		return matrix[row][column];
 	}
 	
+	@JsonIgnore
 	public Random getRandom() {
 		return random;
 	}
-	
+
+	@JsonIgnore
+	public Cell getRandomCell() {
+		return get(random.nextInt(rows), random.nextInt(columns));
+	}
+
 	public int size() {
 		return rows * columns;
 	}
