@@ -1,4 +1,4 @@
-package com.github.verhagen.mazes4p.core;
+package com.github.verhagen.mazes4p.core.creator;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -7,6 +7,9 @@ import java.util.Random;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import com.github.verhagen.mazes4p.core.Distances;
+import com.github.verhagen.mazes4p.core.Grid;
+import com.github.verhagen.mazes4p.core.Summary;
 import com.github.verhagen.mazes4p.core.creator.Sidewinder;
 import com.github.verhagen.mazes4p.output.AsciiArt;
 import com.github.verhagen.mazes4p.output.Graphics2DArt;
