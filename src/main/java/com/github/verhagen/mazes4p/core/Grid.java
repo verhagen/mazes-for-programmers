@@ -80,6 +80,11 @@ public class Grid {
 		return rows;
 	}
 
+	
+	public int getDeathEndsCounted() {
+		return getDeathEnds().size();
+	}
+
 	@JsonIgnore
 	public Collection<Cell> getDeathEnds() {
 		Set<Cell> deathEnds = new HashSet<>();

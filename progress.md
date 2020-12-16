@@ -31,7 +31,7 @@
 
 - [x] Implementing Hunt-and-Kill
 - [x] Counting Dead Ends
-- [ ] Implementing the Recursive Backtracker
+- [x] Implementing the Recursive Backtracker
 
 
 ## Next Steps
